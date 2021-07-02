@@ -1,8 +1,6 @@
-// import logo from './logo.svg';
 import './App.css';
 import React, { useEffect } from 'react';
 import MainPage from './components/MainPage';
-// import io from 'socket.io-client';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -20,22 +18,7 @@ firebase.initializeApp({
 const auth = firebase.auth();
 
 function App() {
-  // const [watching, setWatching] = useState();
-  // const [socket, setSocket] = useState({})
   const [userAuth] = useAuthState(auth);
-  //   useEffect(() => {
-  //     // setSocket(io('ws://localhost:8080/socket.io/', {transports: ['websocket']}))
-  //   }, [])
-
-  //   useEffect(() => {
-  //     // lookupUserFromGoogleId();
-  //     // setUser();
-  // }, [userAuth])
-
-  // useEffect(() => {
-  //     auth.signOut();
-  //     // setUser();
-  // }, []);
 
   return (
     <div className="App">
@@ -46,11 +29,12 @@ function App() {
 }
 
 function SignIn() {
-  console.log("sign in")
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
   }
+
+  
 
   return (
     <button onClick={signInWithGoogle}>Sign in with Google</button>
